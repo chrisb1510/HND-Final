@@ -1,0 +1,7 @@
+--compilers coffee:coffee-script/register
+
+--require coffee-script/register
+--require chai
+--require should
+--require test/helper.coffee
+
