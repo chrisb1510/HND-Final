@@ -148,7 +148,7 @@
         game.players[1].position.should.equal(6);
         return game.players[2].position.should.equal(3);
       });
-      return describe("dice roll", function() {
+      describe("dice roll", function() {
         it("should create a random number", function() {
           var diceRoll;
           diceRoll = function() {
@@ -156,7 +156,7 @@
           };
           return (diceRoll()).should.not.equal(diceRoll());
         });
-        it("should be a whole number within a defined range", function() {
+        return it("should be a whole number within a defined range", function() {
           var User, game, lowerLimit, upperLimit, user, user2;
           User = require('./../User.coffee');
           user = new User();
@@ -167,24 +167,39 @@
           upperLimit = 20;
           return (game.diceRoll(5, 20)).should.be.within(lowerLimit, upperLimit);
         });
-        return describe("Move a player by a dice roll", function() {
-          return it("should move a given player by a random amount", function() {
-            var User, game, lowerLimit, spyOn_Roll, upperLimit, user, user2;
-            User = require('./../User.coffee');
-            user = new User();
-            user2 = new User();
-            game = user.createGame('short');
-            game.addPlayer(user2);
-            lowerLimit = 5;
-            upperLimit = 20;
-            spyOn_Roll = sinon.spy(game, 'diceRoll');
-            game.movePlayer(1);
-            spyOn_Roll.called.should.equal(true);
-            game.players[1].position.should.not.equal(1);
-            game.movePlayer(2, 5);
-            game.players[2].position.should.equal(6);
-            return console.log(game.players[1], game.players[2]);
-          });
+      });
+      describe("Move a player by a dice roll", function() {
+        return it("should move a given player by a random amount", function() {
+          var User, game, lowerLimit, spyOn_Roll, upperLimit, user, user2;
+          User = require('./../User.coffee');
+          user = new User();
+          user2 = new User();
+          game = user.createGame('short');
+          game.addPlayer(user2);
+          lowerLimit = 5;
+          upperLimit = 20;
+          spyOn_Roll = sinon.spy(game, 'diceRoll');
+          game.movePlayer(1);
+          spyOn_Roll.called.should.equal(true);
+          game.players[1].position.should.not.equal(1);
+          game.movePlayer(2, 5);
+          game.players[2].position.should.equal(6);
+          return console.log(game.players[1], game.players[2]);
+        });
+      });
+      return describe("A varying number of coins will be given on each space", function() {
+        return it("should generate coins randomly", function() {
+          var User, firstsample, game, game2, res, res2, secondsample, user;
+          User = require('../User.coffee');
+          user = new User();
+          game = user.createGame();
+          game2 = user.createGame();
+          firstsample = _.sample(game.board.Spaces, 4);
+          res = _.pluck(firstsample, 'coins');
+          secondsample = _.sample(game2.board.Spaces, 4);
+          res2 = _.pluck(secondsample, 'coins');
+          console.log(res, res2);
+          return res.should.not.equal(res2);
         });
       });
     });

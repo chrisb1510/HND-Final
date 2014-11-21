@@ -63,11 +63,6 @@
         amount = this.diceRoll();
       }
       return this.players[playerNumber].position += amount;
-
-      /*console.log move
-      		@movePlayer(1,move)
-      		console.log "Player 1 is now on space #{@players[1].position}"
-       */
     };
 
     return Game;

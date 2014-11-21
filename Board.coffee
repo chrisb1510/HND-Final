@@ -1,9 +1,17 @@
 module.exports = class Board
 	constructor:(@gameId,numOfSpaces,@players)->
-		@Spaces = {}
-		console.log players
-		for [1..numOfSpaces] 
-			@Spaces[_i] = Space:{num:_i,text:"space#{_i}"}	
+		@Spaces = {} 
+		@coinLimits =
+			lowerLimit:1
+			upperLimit:10
+
+		@Spaces = for [1..numOfSpaces]
+			coinAmount = Math.floor(Math.random()*(@coinLimits.upperLimit - @coinLimits.lowerLimit) + @coinLimits.lowerLimit) 
+			@Spaces[_i] = 
+				num: _i
+				text: "space#{_i}"
+				coins: coinAmount	
+
 		
 
 		

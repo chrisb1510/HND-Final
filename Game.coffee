@@ -35,12 +35,8 @@ module.exports = class Game
 		
 	movePlayer:(playerNumber,amount)=>
 		amount ?= @diceRoll()
-
 		@players[playerNumber].position += amount
 	
 	
 	
-		###console.log move
-		@movePlayer(1,move)
-		console.log "Player 1 is now on space #{@players[1].position}"
-		###
+		

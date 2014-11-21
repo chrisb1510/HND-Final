@@ -4,19 +4,27 @@
 
   module.exports = Board = (function() {
     function Board(gameId, numOfSpaces, players) {
-      var _i;
+      var coinAmount;
       this.gameId = gameId;
       this.players = players;
       this.Spaces = {};
-      console.log(players);
-      for (_i = 1; 1 <= numOfSpaces ? _i <= numOfSpaces : _i >= numOfSpaces; 1 <= numOfSpaces ? _i++ : _i--) {
-        this.Spaces[_i] = {
-          Space: {
+      this.coinLimits = {
+        lowerLimit: 1,
+        upperLimit: 10
+      };
+      this.Spaces = (function() {
+        var _i, _results;
+        _results = [];
+        for (_i = 1; 1 <= numOfSpaces ? _i <= numOfSpaces : _i >= numOfSpaces; 1 <= numOfSpaces ? _i++ : _i--) {
+          coinAmount = Math.floor(Math.random() * (this.coinLimits.upperLimit - this.coinLimits.lowerLimit) + this.coinLimits.lowerLimit);
+          _results.push(this.Spaces[_i] = {
             num: _i,
-            text: "space" + _i
-          }
-        };
-      }
+            text: "space" + _i,
+            coins: coinAmount
+          });
+        }
+        return _results;
+      }).call(this);
     }
 
     return Board;

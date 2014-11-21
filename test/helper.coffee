@@ -8,16 +8,20 @@ sinon = require 'sinon'
 chai.config.includeStack = true
 _ = require 'lodash'
 describe "User", ->
+	
 	it "User file should exist", ->
 		User = require './../User.coffee'
+
 	it "user should be type of User",->
 		User = require './../User.coffee'
 		user = new User()
 		user.should.be.instanceof User
+	
 	it "User should have a name",->
 		User = require './../User.coffee'
 		user = new User()
 		user.name.should.not.equal ' '
+	
 	it "A user should be able to create a game",->
 		Game = require './../Game.coffee'
 		User = require './../User.coffee'
@@ -153,8 +157,8 @@ describe "Game",->
 				upperLimit = 20
 				(game.diceRoll(5,20)).should.be.within(lowerLimit, upperLimit)
 			
-			describe "Move a player by a dice roll",->
-				it "should move a given player by a random amount",->
+		describe "Move a player by a dice roll",->
+			it "should move a given player by a random amount",->
 					User = require './../User.coffee'
 					user = new User()
 					user2 = new User()
@@ -172,4 +176,23 @@ describe "Game",->
 					game.movePlayer(2,5)
 					game.players[2].position.should.equal 6
 					console.log game.players[1],game.players[2]
+
+		describe "A varying number of coins will be given on each space",->
+			it "should generate coins randomly",->
+				User = require '../User.coffee'
+				user = new User()
+				game = user.createGame()
+				game2 = user.createGame()
+				firstsample  = _.sample(game.board.Spaces,4)
+				res = _.pluck firstsample, 'coins'
+
+				secondsample = _.sample game2.board.Spaces,4
+
+				res2 = _.pluck secondsample, 'coins'
+				console.log res,res2
+				res.should.not.equal res2
+ 
+				
+
+
 
