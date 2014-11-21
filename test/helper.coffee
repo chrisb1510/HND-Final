@@ -2,8 +2,10 @@ require 'coffee-script/register'
 
 
 chai = require 'chai'
-should = require 'should'
+should = chai.should()
 sinon = require 'sinon'
+sinonchai = require 'sinon-chai'
+chai.use(sinonchai)
 
 chai.config.includeStack = true
 _ = require 'lodash'
@@ -183,15 +185,38 @@ describe "Game",->
 				user = new User()
 				game = user.createGame()
 				game2 = user.createGame()
-				firstsample  = _.sample(game.board.Spaces,4)
+				
+				firstsample  = _.sample( game.board.Spaces, 4 )
 				res = _.pluck firstsample, 'coins'
 
-				secondsample = _.sample game2.board.Spaces,4
-
+				secondsample = _.sample( game2.board.Spaces, 4 )
 				res2 = _.pluck secondsample, 'coins'
+				
 				console.log res,res2
 				res.should.not.equal res2
- 
+ 			it "a player starts with 0 coins",->
+ 				User = require '../User.coffee'
+				user = new User()
+				user2 = new User()
+				game = user.createGame()	
+				game.addPlayer user2
+
+				game.players[1].coins.should.equal 0
+				game.players[2].coins.should.equal 0
+
+			it "A player accumulates coins by landing on spaces",->
+				User = require '../User.coffee'
+				user = new User()
+				user2 = new User()
+				game = user.createGame()	
+				game.addPlayer user2
+
+				res = game.board.Spaces[7].coins
+				console.log res
+				spyOn_giveCoin = sinon.spy(game.board,'giveCoin')
+				game.movePlayer(1,6)
+				console.log game.players
+				spyOn_giveCoin.should.have.been.calledWith 7,1
 				
 
 

@@ -1,10 +1,5 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/bin/node',
-1 verbose cli   '/usr/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   '-D',
-1 verbose cli   'sinon',
-1 verbose cli   'sinonChai' ]
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'sinon-chai-D' ]
 2 info using npm@1.4.28
 3 info using node@v0.10.33
 4 verbose node symlink /usr/bin/node
@@ -12,8 +7,8 @@
 6 warn package.json @ No repository field.
 7 warn package.json @ No README data
 8 verbose readDependencies using package.json deps
-9 verbose cache add [ 'sinon', null ]
-10 verbose cache add name=undefined spec="sinon" args=["sinon",null]
+9 verbose cache add [ 'sinon-chai-D', null ]
+10 verbose cache add name=undefined spec="sinon-chai-D" args=["sinon-chai-D",null]
 11 verbose parsed url { protocol: null,
 11 verbose parsed url   slashes: null,
 11 verbose parsed url   auth: null,
@@ -23,165 +18,70 @@
 11 verbose parsed url   hash: null,
 11 verbose parsed url   search: null,
 11 verbose parsed url   query: null,
-11 verbose parsed url   pathname: 'sinon',
-11 verbose parsed url   path: 'sinon',
-11 verbose parsed url   href: 'sinon' }
-12 verbose cache add [ 'sinonChai', null ]
-13 verbose cache add name=undefined spec="sinonChai" args=["sinonChai",null]
-14 verbose parsed url { protocol: null,
-14 verbose parsed url   slashes: null,
-14 verbose parsed url   auth: null,
-14 verbose parsed url   host: null,
-14 verbose parsed url   port: null,
-14 verbose parsed url   hostname: null,
-14 verbose parsed url   hash: null,
-14 verbose parsed url   search: null,
-14 verbose parsed url   query: null,
-14 verbose parsed url   pathname: 'sinonChai',
-14 verbose parsed url   path: 'sinonChai',
-14 verbose parsed url   href: 'sinonChai' }
-15 silly lockFile 39abfeda-sinon sinon
-16 verbose lock sinon /home/chris/.npm/39abfeda-sinon.lock
-17 silly lockFile b52ef9cc-sinonChai sinonChai
-18 verbose lock sinonChai /home/chris/.npm/b52ef9cc-sinonChai.lock
-19 silly lockFile 39abfeda-sinon sinon
-20 silly lockFile 39abfeda-sinon sinon
-21 silly lockFile b52ef9cc-sinonChai sinonChai
-22 silly lockFile b52ef9cc-sinonChai sinonChai
-23 verbose addNamed [ 'sinon', '' ]
-24 verbose addNamed [ null, '*' ]
-25 silly lockFile 3b285ea5-sinon sinon@
-26 verbose lock sinon@ /home/chris/.npm/3b285ea5-sinon.lock
-27 verbose addNamed [ 'sinonChai', '' ]
-28 verbose addNamed [ null, '*' ]
-29 silly lockFile 3cce070e-sinonChai sinonChai@
-30 verbose lock sinonChai@ /home/chris/.npm/3cce070e-sinonChai.lock
-31 silly addNameRange { name: 'sinon', range: '*', hasData: false }
-32 silly addNameRange { name: 'sinonChai', range: '*', hasData: false }
-33 verbose request where is /sinonChai
-34 verbose request registry https://registry.npmjs.org/
-35 verbose request id 79b856963c92655a
-36 verbose url raw /sinonChai
-37 verbose url resolving [ 'https://registry.npmjs.org/', './sinonChai' ]
-38 verbose url resolved https://registry.npmjs.org/sinonChai
-39 verbose request where is https://registry.npmjs.org/sinonChai
-40 info trying registry request attempt 1 at 22:43:52
-41 http GET https://registry.npmjs.org/sinonChai
-42 verbose request where is /sinon
-43 verbose request registry https://registry.npmjs.org/
-44 verbose url raw /sinon
-45 verbose url resolving [ 'https://registry.npmjs.org/', './sinon' ]
-46 verbose url resolved https://registry.npmjs.org/sinon
-47 verbose request where is https://registry.npmjs.org/sinon
-48 info trying registry request attempt 1 at 22:43:52
-49 verbose etag "DOZPOQHUYLM3H724F8FX9O8LI"
-50 http GET https://registry.npmjs.org/sinon
-51 http 404 https://registry.npmjs.org/sinonChai
-52 verbose headers { date: 'Thu, 20 Nov 2014 22:43:52 GMT',
-52 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-52 verbose headers   'content-type': 'application/json',
-52 verbose headers   'cache-control': 'max-age=0',
-52 verbose headers   'content-length': '52',
-52 verbose headers   'accept-ranges': 'bytes',
-52 verbose headers   via: '1.1 varnish',
-52 verbose headers   age: '0',
-52 verbose headers   'x-served-by': 'cache-lhr6331-LHR',
-52 verbose headers   'x-cache': 'MISS',
-52 verbose headers   'x-cache-hits': '0',
-52 verbose headers   'x-timer': 'S1416523432.318662,VS0,VE156',
-52 verbose headers   'keep-alive': 'timeout=10, max=50',
-52 verbose headers   connection: 'Keep-Alive' }
-53 silly registry.get cb [ 404,
-53 silly registry.get   { date: 'Thu, 20 Nov 2014 22:43:52 GMT',
-53 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
-53 silly registry.get     'content-type': 'application/json',
-53 silly registry.get     'cache-control': 'max-age=0',
-53 silly registry.get     'content-length': '52',
-53 silly registry.get     'accept-ranges': 'bytes',
-53 silly registry.get     via: '1.1 varnish',
-53 silly registry.get     age: '0',
-53 silly registry.get     'x-served-by': 'cache-lhr6331-LHR',
-53 silly registry.get     'x-cache': 'MISS',
-53 silly registry.get     'x-cache-hits': '0',
-53 silly registry.get     'x-timer': 'S1416523432.318662,VS0,VE156',
-53 silly registry.get     'keep-alive': 'timeout=10, max=50',
-53 silly registry.get     connection: 'Keep-Alive' } ]
-54 silly lockFile 3cce070e-sinonChai sinonChai@
-55 silly lockFile 3cce070e-sinonChai sinonChai@
-56 http 304 https://registry.npmjs.org/sinon
-57 silly registry.get cb [ 304,
-57 silly registry.get   { date: 'Thu, 20 Nov 2014 22:43:52 GMT',
-57 silly registry.get     server: 'Apache',
-57 silly registry.get     via: '1.1 varnish',
-57 silly registry.get     'last-modified': 'Thu, 20 Nov 2014 22:43:52 GMT',
-57 silly registry.get     'cache-control': 'max-age=60',
-57 silly registry.get     etag: '"DOZPOQHUYLM3H724F8FX9O8LI"',
-57 silly registry.get     age: '0',
-57 silly registry.get     'x-served-by': 'cache-lhr6330-LHR',
-57 silly registry.get     'x-cache': 'HIT',
-57 silly registry.get     'x-cache-hits': '1',
-57 silly registry.get     'x-timer': 'S1416523432.329272,VS0,VE352',
-57 silly registry.get     vary: 'Accept',
-57 silly registry.get     'content-length': '0',
-57 silly registry.get     'keep-alive': 'timeout=10, max=50',
-57 silly registry.get     connection: 'Keep-Alive' } ]
-58 verbose etag https://registry.npmjs.org/sinon from cache
-59 silly addNameRange number 2 { name: 'sinon', range: '*', hasData: true }
-60 silly addNameRange versions [ 'sinon',
-60 silly addNameRange   [ '0.6.2',
-60 silly addNameRange     '0.6.3',
-60 silly addNameRange     '1.0.0',
-60 silly addNameRange     '1.0.1',
-60 silly addNameRange     '1.0.2',
-60 silly addNameRange     '1.1.0',
-60 silly addNameRange     '1.1.1',
-60 silly addNameRange     '1.2.0',
-60 silly addNameRange     '1.3.0',
-60 silly addNameRange     '1.3.1',
-60 silly addNameRange     '1.3.2',
-60 silly addNameRange     '1.3.3',
-60 silly addNameRange     '1.3.4',
-60 silly addNameRange     '1.4.0',
-60 silly addNameRange     '1.4.1',
-60 silly addNameRange     '1.4.2',
-60 silly addNameRange     '1.5.0',
-60 silly addNameRange     '1.5.2',
-60 silly addNameRange     '1.6.0',
-60 silly addNameRange     '1.7.0',
-60 silly addNameRange     '1.7.1',
-60 silly addNameRange     '1.7.2',
-60 silly addNameRange     '1.7.3',
-60 silly addNameRange     '1.8.1',
-60 silly addNameRange     '1.8.2',
-60 silly addNameRange     '1.9.0',
-60 silly addNameRange     '1.9.1',
-60 silly addNameRange     '1.10.0',
-60 silly addNameRange     '1.10.1',
-60 silly addNameRange     '1.10.2',
-60 silly addNameRange     '1.10.3',
-60 silly addNameRange     '1.11.0',
-60 silly addNameRange     '1.11.1',
-60 silly addNameRange     '1.12.0',
-60 silly addNameRange     '1.12.1' ] ]
-61 verbose addNamed [ 'sinon', '1.12.1' ]
-62 verbose addNamed [ '1.12.1', '1.12.1' ]
-63 silly lockFile a978793b-sinon-1-12-1 sinon@1.12.1
-64 verbose lock sinon@1.12.1 /home/chris/.npm/a978793b-sinon-1-12-1.lock
-65 silly lockFile a978793b-sinon-1-12-1 sinon@1.12.1
-66 silly lockFile a978793b-sinon-1-12-1 sinon@1.12.1
-67 silly lockFile 3b285ea5-sinon sinon@
-68 silly lockFile 3b285ea5-sinon sinon@
-69 error 404 404 Not Found: sinonChai
-69 error 404
-69 error 404 'sinonChai' is not in the npm registry.
-69 error 404 You should bug the author to publish it
-69 error 404
-69 error 404 Note that you can also install from a
-69 error 404 tarball, folder, or http url, or git url.
-70 error System Linux 3.13.0-39-generic
-71 error command "/usr/bin/node" "/usr/bin/npm" "install" "-D" "sinon" "sinonChai"
-72 error cwd /home/chris/Documents/node
-73 error node -v v0.10.33
-74 error npm -v 1.4.28
-75 error code E404
-76 verbose exit [ 1, true ]
+11 verbose parsed url   pathname: 'sinon-chai-D',
+11 verbose parsed url   path: 'sinon-chai-D',
+11 verbose parsed url   href: 'sinon-chai-D' }
+12 silly lockFile 04487f9c-sinon-chai-D sinon-chai-D
+13 verbose lock sinon-chai-D /home/chris/.npm/04487f9c-sinon-chai-D.lock
+14 silly lockFile 04487f9c-sinon-chai-D sinon-chai-D
+15 silly lockFile 04487f9c-sinon-chai-D sinon-chai-D
+16 verbose addNamed [ 'sinon-chai-D', '' ]
+17 verbose addNamed [ null, '*' ]
+18 silly lockFile d7896393-sinon-chai-D sinon-chai-D@
+19 verbose lock sinon-chai-D@ /home/chris/.npm/d7896393-sinon-chai-D.lock
+20 silly addNameRange { name: 'sinon-chai-D', range: '*', hasData: false }
+21 verbose request where is /sinon-chai-D
+22 verbose request registry https://registry.npmjs.org/
+23 verbose request id f44f683ecdf0a4e2
+24 verbose url raw /sinon-chai-D
+25 verbose url resolving [ 'https://registry.npmjs.org/', './sinon-chai-D' ]
+26 verbose url resolved https://registry.npmjs.org/sinon-chai-D
+27 verbose request where is https://registry.npmjs.org/sinon-chai-D
+28 info trying registry request attempt 1 at 12:00:38
+29 http GET https://registry.npmjs.org/sinon-chai-D
+30 http 404 https://registry.npmjs.org/sinon-chai-D
+31 verbose headers { date: 'Fri, 21 Nov 2014 12:00:38 GMT',
+31 verbose headers   server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+31 verbose headers   'content-type': 'application/json',
+31 verbose headers   'cache-control': 'max-age=0',
+31 verbose headers   'content-length': '52',
+31 verbose headers   'accept-ranges': 'bytes',
+31 verbose headers   via: '1.1 varnish',
+31 verbose headers   age: '0',
+31 verbose headers   'x-served-by': 'cache-lcy1127-LCY',
+31 verbose headers   'x-cache': 'MISS',
+31 verbose headers   'x-cache-hits': '0',
+31 verbose headers   'x-timer': 'S1416571238.458909,VS0,VE91',
+31 verbose headers   'keep-alive': 'timeout=10, max=50',
+31 verbose headers   connection: 'Keep-Alive' }
+32 silly registry.get cb [ 404,
+32 silly registry.get   { date: 'Fri, 21 Nov 2014 12:00:38 GMT',
+32 silly registry.get     server: 'CouchDB/1.5.0 (Erlang OTP/R14B04)',
+32 silly registry.get     'content-type': 'application/json',
+32 silly registry.get     'cache-control': 'max-age=0',
+32 silly registry.get     'content-length': '52',
+32 silly registry.get     'accept-ranges': 'bytes',
+32 silly registry.get     via: '1.1 varnish',
+32 silly registry.get     age: '0',
+32 silly registry.get     'x-served-by': 'cache-lcy1127-LCY',
+32 silly registry.get     'x-cache': 'MISS',
+32 silly registry.get     'x-cache-hits': '0',
+32 silly registry.get     'x-timer': 'S1416571238.458909,VS0,VE91',
+32 silly registry.get     'keep-alive': 'timeout=10, max=50',
+32 silly registry.get     connection: 'Keep-Alive' } ]
+33 silly lockFile d7896393-sinon-chai-D sinon-chai-D@
+34 silly lockFile d7896393-sinon-chai-D sinon-chai-D@
+35 error 404 404 Not Found: sinon-chai-D
+35 error 404
+35 error 404 'sinon-chai-D' is not in the npm registry.
+35 error 404 You should bug the author to publish it
+35 error 404
+35 error 404 Note that you can also install from a
+35 error 404 tarball, folder, or http url, or git url.
+36 error System Linux 3.13.0-39-generic
+37 error command "/usr/bin/node" "/usr/bin/npm" "install" "sinon-chai-D"
+38 error cwd /home/chris/Documents/node
+39 error node -v v0.10.33
+40 error npm -v 1.4.28
+41 error code E404
+42 verbose exit [ 1, true ]

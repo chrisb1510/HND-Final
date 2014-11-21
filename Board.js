@@ -3,29 +3,45 @@
   var Board;
 
   module.exports = Board = (function() {
+    var COIN_DEFAULTS;
+
+    COIN_DEFAULTS = {
+      lowerLimit: 1,
+      upperLimit: 10
+    };
+
     function Board(gameId, numOfSpaces, players) {
       var coinAmount;
       this.gameId = gameId;
       this.players = players;
       this.Spaces = {};
-      this.coinLimits = {
-        lowerLimit: 1,
-        upperLimit: 10
-      };
       this.Spaces = (function() {
         var _i, _results;
         _results = [];
         for (_i = 1; 1 <= numOfSpaces ? _i <= numOfSpaces : _i >= numOfSpaces; 1 <= numOfSpaces ? _i++ : _i--) {
-          coinAmount = Math.floor(Math.random() * (this.coinLimits.upperLimit - this.coinLimits.lowerLimit) + this.coinLimits.lowerLimit);
+          coinAmount = function() {
+            var value;
+            if (_i === 1) {
+              value = 0;
+            } else {
+              value = Math.floor(Math.random() * (COIN_DEFAULTS.upperLimit - COIN_DEFAULTS.lowerLimit) + COIN_DEFAULTS.lowerLimit);
+            }
+            return value;
+          };
           _results.push(this.Spaces[_i] = {
             num: _i,
             text: "space" + _i,
-            coins: coinAmount
+            coins: coinAmount()
           });
         }
         return _results;
       }).call(this);
     }
+
+    Board.prototype.giveCoin = function(space, player) {
+      console.log(this.players[player]);
+      return this.players[player].coins += this.Spaces[space].coins;
+    };
 
     return Board;
 

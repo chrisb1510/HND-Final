@@ -9,6 +9,7 @@ module.exports = class Game
   			1: 
     			user: @owner ?= 1
     			position : 1
+    			coins:0
 
 		Board = require './Board.coffee'
 
@@ -24,18 +25,26 @@ module.exports = class Game
 		lowerLimit ?= 0
 		upperLimit ?= 10
 		
-		Math.floor(Math.random()*(upperLimit - lowerLimit) + lowerLimit)
+		Math.floor(Math.random()*
+			(upperLimit - lowerLimit) + lowerLimit)
 		
 	
 	addPlayer:(user)->
 		playercount = _.size(@players)
 		
-		@players[++playercount] = {user:user.id,position:1}
+		@players[++playercount] = 
+
+			user:		user.id
+			position:	1
+			coins:		0
+
 		console.log "player added"
 		
 	movePlayer:(playerNumber,amount)=>
 		amount ?= @diceRoll()
 		@players[playerNumber].position += amount
+		pos = @players[playerNumber].position
+		@board.giveCoin(pos,playerNumber)
 	
 	
 	

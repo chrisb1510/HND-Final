@@ -19,7 +19,8 @@
       this.players = {
         1: {
           user: this.owner != null ? this.owner : this.owner = 1,
-          position: 1
+          position: 1,
+          coins: 0
         }
       };
       Board = require('./Board.coffee');
@@ -53,16 +54,20 @@
       playercount = _.size(this.players);
       this.players[++playercount] = {
         user: user.id,
-        position: 1
+        position: 1,
+        coins: 0
       };
       return console.log("player added");
     };
 
     Game.prototype.movePlayer = function(playerNumber, amount) {
+      var pos;
       if (amount == null) {
         amount = this.diceRoll();
       }
-      return this.players[playerNumber].position += amount;
+      this.players[playerNumber].position += amount;
+      pos = this.players[playerNumber].position;
+      return this.board.giveCoin(pos, playerNumber);
     };
 
     return Game;
