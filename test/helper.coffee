@@ -3,7 +3,7 @@ require 'coffee-script/register'
 
 chai = require 'chai'
 should = require 'should'
-
+sinon = require 'sinon'
 
 chai.config.includeStack = true
 _ = require 'lodash'
@@ -152,8 +152,24 @@ describe "Game",->
 				lowerLimit = 5
 				upperLimit = 20
 				(game.diceRoll(5,20)).should.be.within(lowerLimit, upperLimit)
-				.and.should.not.equal game.diceRoll(lowerLimit,upperLimit)	
-		describe "Move a player by a dice roll",->
-			it "should move a given player by a random amount",->
+			
+			describe "Move a player by a dice roll",->
+				it "should move a given player by a random amount",->
+					User = require './../User.coffee'
+					user = new User()
+					user2 = new User()
 				
+					game = user.createGame('short')
+					game.addPlayer(user2)
+					lowerLimit = 5
+					upperLimit = 20
+
+					spyOn_Roll = sinon.spy(game,'diceRoll') 
+					game.movePlayer(1)
+					spyOn_Roll.called.should.equal true
+					game.players[1].position.should.not.equal 1
+					
+					game.movePlayer(2,5)
+					game.players[2].position.should.equal 6
+					console.log game.players[1],game.players[2]
 

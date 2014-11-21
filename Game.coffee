@@ -19,7 +19,14 @@ module.exports = class Game
 			when 'medium' then new Board(@id,40,@players)
 			when 'short' then new Board(@id,20,@players)
 			 
+	
+	diceRoll:(lowerLimit,upperLimit)=>
+		lowerLimit ?= 0
+		upperLimit ?= 10
 		
+		Math.floor(Math.random()*(upperLimit - lowerLimit) + lowerLimit)
+		
+	
 	addPlayer:(user)->
 		playercount = _.size(@players)
 		
@@ -27,11 +34,13 @@ module.exports = class Game
 		console.log "player added"
 		
 	movePlayer:(playerNumber,amount)=>
-		
+		amount ?= @diceRoll()
+
 		@players[playerNumber].position += amount
 	
-	diceRoll:(lowerLimit,upperLimit)=>
-		upperLimit ?= 10
-		lowerLimit ?= 0
-		Math.floor(Math.random()*(upperLimit - lowerLimit) + lowerLimit)
-		
+	
+	
+		###console.log move
+		@movePlayer(1,move)
+		console.log "Player 1 is now on space #{@players[1].position}"
+		###

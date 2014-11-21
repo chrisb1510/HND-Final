@@ -13,8 +13,8 @@
     function Game(owner, length) {
       var Board;
       this.owner = owner;
-      this.diceRoll = __bind(this.diceRoll, this);
       this.movePlayer = __bind(this.movePlayer, this);
+      this.diceRoll = __bind(this.diceRoll, this);
       this.id = _GAMECOUNT++;
       this.players = {
         1: {
@@ -38,6 +38,16 @@
       }).call(this);
     }
 
+    Game.prototype.diceRoll = function(lowerLimit, upperLimit) {
+      if (lowerLimit == null) {
+        lowerLimit = 0;
+      }
+      if (upperLimit == null) {
+        upperLimit = 10;
+      }
+      return Math.floor(Math.random() * (upperLimit - lowerLimit) + lowerLimit);
+    };
+
     Game.prototype.addPlayer = function(user) {
       var playercount;
       playercount = _.size(this.players);
@@ -49,17 +59,15 @@
     };
 
     Game.prototype.movePlayer = function(playerNumber, amount) {
+      if (amount == null) {
+        amount = this.diceRoll();
+      }
       return this.players[playerNumber].position += amount;
-    };
 
-    Game.prototype.diceRoll = function(lowerLimit, upperLimit) {
-      if (upperLimit == null) {
-        upperLimit = 10;
-      }
-      if (lowerLimit == null) {
-        lowerLimit = 0;
-      }
-      return Math.floor(Math.random() * (upperLimit - lowerLimit) + lowerLimit);
+      /*console.log move
+      		@movePlayer(1,move)
+      		console.log "Player 1 is now on space #{@players[1].position}"
+       */
     };
 
     return Game;

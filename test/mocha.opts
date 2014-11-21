@@ -3,5 +3,6 @@
 --require coffee-script/register
 --require chai
 --require should
+--require sinon
 --require test/helper.coffee
 
