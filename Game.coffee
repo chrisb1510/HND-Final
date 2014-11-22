@@ -43,8 +43,11 @@ module.exports = class Game
 	movePlayer:(playerNumber,amount)=>
 		amount ?= @diceRoll()
 		@players[playerNumber].position += amount
-		pos = @players[playerNumber].position
-		@board.giveCoin(pos,playerNumber)
+		position = @players[playerNumber].position
+		oldCoins = @players[playerNumber].coins
+		@board.giveCoin(position,playerNumber)
+		console.log "Player #{playerNumber} moved #{amount} spaces\n 
+		 and received #{@board.Spaces[position].coins} coins"
 	
 	
 	

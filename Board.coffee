@@ -25,10 +25,10 @@ module.exports = class Board
 
 
 	giveCoin:(space,player)->
-		console.log @players[player]
-		@players[player].coins += @Spaces[space].coins
 		
-
+		res = @players[player].coins += @Spaces[space].coins
+		console.log @players[player]		
+		res
 
 		
 

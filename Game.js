@@ -61,13 +61,15 @@
     };
 
     Game.prototype.movePlayer = function(playerNumber, amount) {
-      var pos;
+      var oldCoins, position;
       if (amount == null) {
         amount = this.diceRoll();
       }
       this.players[playerNumber].position += amount;
-      pos = this.players[playerNumber].position;
-      return this.board.giveCoin(pos, playerNumber);
+      position = this.players[playerNumber].position;
+      oldCoins = this.players[playerNumber].coins;
+      this.board.giveCoin(position, playerNumber);
+      return console.log("Player " + playerNumber + " moved " + amount + " spaces\n and received " + this.board.Spaces[position].coins + " coins");
     };
 
     return Game;

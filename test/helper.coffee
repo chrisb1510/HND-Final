@@ -1,8 +1,17 @@
 require 'coffee-script/register'
-
+require('coffee-coverage').register(
+        path: 'abbr'
+        basePath: __dirname
+        exclude: [
+        	'/test'
+        	'/node_modules'
+        	 '/.git']
+        initAll: true
+        
+    )
 
 chai = require 'chai'
-should = chai.should()
+should = require 'should'
 sinon = require 'sinon'
 sinonchai = require 'sinon-chai'
 chai.use(sinonchai)
@@ -177,7 +186,7 @@ describe "Game",->
 					
 					game.movePlayer(2,5)
 					game.players[2].position.should.equal 6
-					console.log game.players[1],game.players[2]
+					# console.log game.players[1],game.players[2]
 
 		describe "A varying number of coins will be given on each space",->
 			it "should generate coins randomly",->
@@ -192,7 +201,7 @@ describe "Game",->
 				secondsample = _.sample( game2.board.Spaces, 4 )
 				res2 = _.pluck secondsample, 'coins'
 				
-				console.log res,res2
+				# console.log res,res2
 				res.should.not.equal res2
  			it "a player starts with 0 coins",->
  				User = require '../User.coffee'
@@ -211,13 +220,21 @@ describe "Game",->
 				game = user.createGame()	
 				game.addPlayer user2
 
-				res = game.board.Spaces[7].coins
-				console.log res
+				coinsToGive = game.board.Spaces[7].coins
+				
 				spyOn_giveCoin = sinon.spy(game.board,'giveCoin')
 				game.movePlayer(1,6)
-				console.log game.players
 				spyOn_giveCoin.should.have.been.calledWith 7,1
+
+				coinsToGiveSecond = game.board.Spaces[13].coins
+				game.movePlayer(1,6)
 				
+				spyOn_giveCoin.should.have.been.calledWith 13,1
+				game.players[1].coins.should.equal coinsToGive+coinsToGiveSecond
+
+				spyOn_giveCoin.should.have.been.called.twice
+
+			it "should end when all players reach the final space",->
 
 
 
