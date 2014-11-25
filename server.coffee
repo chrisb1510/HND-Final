@@ -1,33 +1,25 @@
-fs = require 'fs'
-http = require 'http'
-socketio = require 'socket.io'
+fs = require('fs')
+
+handler = (req, res) ->
+  fs.readFile __dirname + '/index.html', (err, data)->
+    if err?
+      res.writeHead(500)
+      res.end('Error loading index.html')
+    res.writeHead(200)
+    res.end(data)
+
+app = require('http').createServer(handler)
+io = require('socket.io')(app)
+app.listen 3000, ->
+  console.log 'Server listening on 3000'
+  
 
 
+io.on 'connection', (socket) ->
+  socket.emit 'welcome', "Welcome new User"
+  socket.on 'my other event', (data)-> 
+    console.log(data)
+  
 
 
-
-myGame = http.createServer (request,response) ->
-    response.writeHead 200,'Content-type': 'text/html'
-    fs.readFile "#{__dirname}/index.html",(err,data)->
-        if err   
-            response.writeHead 500
-            response.end "no index.html"
-        response.end data
-            
-myGame.listen 3000, ->
-    console.log "Welcome server started on\n 
-	 localhost:3000" 
- 
-        
-    
-
-myGame.socket = socketio.listen myGame	
-
-
-
-
-
-
-
-
- 
+module.exports = app

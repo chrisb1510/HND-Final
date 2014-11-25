@@ -228,25 +228,41 @@ describe "Game",->
 			it "should end when all players reach the final space"
 
 
+Browser = require 'zombie'
+
 
 describe "server",->
-	Browser = require 'zombie'	
 	
-	it "A server should exist", ->
-		browser = new Browser({debug:true})
-
-		browser.visit 'http://localhost:3000', ->
-			if browser.error? 
-				console.error("Errors reported:", browser.errors)
-			
-			
-	after ()->
-		# browser.close()
-
+	beforeEach ->
+		
 		
 
-	it "The server should accept connections"
-	it "It should welcome the new user"
+	it "testing 123",(done)->
+		browser = new Browser()
+		browser.visit "http://www.google.com"
+		.then ()->
+			
+			browser.success.should.equal true
+			# browser.log("Currently visiting", browser.location)
+			console.log browser.location.toString()
+		.then done,done
+			
+	
+	it "It should welcome the new user by websocket",(done)->
+		browser = new Browser()
+		browser.visit "http://localhost:3000"
+		.then ()->
+			browser.success.should.equal true
+			
+		.then ->
+			# console.log browser.html('p')
+			browser.text("p").should.equal "Hello"
+			done()
+		.catch (error)->
+			console.error error
+			done(error) 
+				
+		
 	it "It should record users connections"
 	
 	it "It should check which features a device is capable of using modernizr"
