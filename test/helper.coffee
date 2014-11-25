@@ -1,17 +1,7 @@
 require 'coffee-script/register'
-require('coffee-coverage').register(
-        path: 'abbr'
-        basePath: __dirname
-        exclude: [
-        	'/test'
-        	'/node_modules'
-        	 '/.git']
-        initAll: true
-        
-    )
 
 chai = require 'chai'
-should = require 'should'
+chai.should()
 sinon = require 'sinon'
 sinonchai = require 'sinon-chai'
 chai.use(sinonchai)
@@ -223,6 +213,7 @@ describe "Game",->
 				coinsToGive = game.board.Spaces[7].coins
 				
 				spyOn_giveCoin = sinon.spy(game.board,'giveCoin')
+				
 				game.movePlayer(1,6)
 				spyOn_giveCoin.should.have.been.calledWith 7,1
 
@@ -234,7 +225,68 @@ describe "Game",->
 
 				spyOn_giveCoin.should.have.been.called.twice
 
-			it "should end when all players reach the final space",->
+			it "should end when all players reach the final space"
 
+
+
+describe "server",->
+	Browser = require 'zombie'	
+	
+	it "A server should exist", ->
+		browser = new Browser({debug:true})
+
+		browser.visit 'http://localhost:3000', ->
+			if browser.error? 
+				console.error("Errors reported:", browser.errors)
+			
+			
+	after ()->
+		# browser.close()
+
+		
+
+	it "The server should accept connections"
+	it "It should welcome the new user"
+	it "It should record users connections"
+	
+	it "It should check which features a device is capable of using modernizr"
+	it "It should log the users browser"
+	
+	it "It should allow users to register a unique user name"
+	it "It should allow the users to set a password to save their win/loss/coins"
+
+	it "The main access point should be index.html"
+	
+
+	describe "index",->
+		it "Index should have a title"
+		it "Index should show connected users in a list"
+
+		it "When a user hovers over another users name, a pop up should show"
+		it "should show games won/lost"
+		it "should show their avatar"
+		it "should show total coins collected"
+
+		it "Index should have a textbox to enter messages"
+		it "Index should have a message submit button"
+		it "Index should have an area to display general messages from other users"
+		it "should allow private messages between users"
+		
+		it "Index should have a new game button"
+		it "When a user clicks 'New game' a choice of long medium or short is given"
+		it "The user should be taken to a private room"
+		it "A list of users should be shown"
+		it "When a user is clicked an invite option should be shown"
+
+		it "When a user is invited a yes/no selection is presented"
+		it "When the user accepts they are moved to the private room"
+		it "When a user declines the host is notified"
+
+		it "When one or more users have accepted a start game button is made available"
+		it "When start game is selected the game board should be displayed"
+		it "The game board should show the correct number of spaces"
+		it "The game should display each user as a playing piece"
+		it "The game should show coins collected"
+		it "At the end of each turn a mini game will be started"
 
 

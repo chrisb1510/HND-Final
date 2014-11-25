@@ -15,6 +15,7 @@
       if (this.name == null) {
         this.name = "user" + this.id;
       }
+      this.coinsTotal = 0;
     }
 
     User.prototype.createGame = function(length) {

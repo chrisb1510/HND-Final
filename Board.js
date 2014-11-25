@@ -40,9 +40,7 @@
 
     Board.prototype.giveCoin = function(space, player) {
       var res;
-      res = this.players[player].coins += this.Spaces[space].coins;
-      console.log(this.players[player]);
-      return res;
+      return res = this.players[player].coins += this.Spaces[space].coins;
     };
 
     return Board;

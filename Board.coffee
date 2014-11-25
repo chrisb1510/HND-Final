@@ -15,9 +15,6 @@ module.exports = class Board
 				else
 					value = Math.floor(Math.random()*(COIN_DEFAULTS.upperLimit - COIN_DEFAULTS.lowerLimit) + COIN_DEFAULTS.lowerLimit)
 				value
-			
-
-			
 			@Spaces[_i] = 
 				num: _i
 				text:"space#{_i}"
@@ -27,8 +24,7 @@ module.exports = class Board
 	giveCoin:(space,player)->
 		
 		res = @players[player].coins += @Spaces[space].coins
-		console.log @players[player]		
-		res
+
 
 		
 

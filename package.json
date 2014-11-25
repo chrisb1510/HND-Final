@@ -8,6 +8,7 @@
     "should": "^4.3.0",
     "sinon": "^1.12.1",
     "sinon-chai": "^2.6.0",
-    "socket.io": "^1.2.0"
+    "socket.io": "^1.2.0",
+    "zombie": "^2.2.1"
   }
 }

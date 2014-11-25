@@ -5,6 +5,7 @@ module.exports = class User
 	constructor:(@name)->
 		@id = _USERCOUNT++
 		@name ?= "user#{@id}"
+		@coinsTotal = 0
 	createGame:(length)=>
 		Game = require('./Game.coffee')
 		game = new Game(@id,length)
