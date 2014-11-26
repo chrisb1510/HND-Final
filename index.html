@@ -1,18 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 	<title>Welcome</title>
+	<script src="/socket.io/socket.io.js" ></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>
 <p>Hello</p>
 <footer>
-<script src="/socket.io/socket.io.js"></script>
+
 <script>
-  var socket = io('http://localhost');
-  socket.on('welcome', function (data) {
-    console.log(data);
-    socket.emit('my other event', { my: 'data' });
-  });
+	$( document ).ready(function() {
+    console.log( "ready!" );
+    window.socket = io('http://localhost');
+  		
+  		socket.on('welcome', function (data) {
+    	document.title = data
+    	console.log(data)
+    	socket.emit('my other event', { my: 'data' });
+  		});
+});
+  
 </script>
 </footer>
 </body>

@@ -5,7 +5,7 @@ handler = (req, res) ->
     if err?
       res.writeHead(500)
       res.end('Error loading index.html')
-    res.writeHead(200)
+    res.writeHead(200, {"Content-Type": "text/html"})
     res.end(data)
 
 app = require('http').createServer(handler)

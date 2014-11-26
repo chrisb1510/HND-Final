@@ -10,7 +10,9 @@
         res.writeHead(500);
         res.end('Error loading index.html');
       }
-      res.writeHead(200);
+      res.writeHead(200, {
+        "Content-Type": "text/html"
+      });
       return res.end(data);
     });
   };

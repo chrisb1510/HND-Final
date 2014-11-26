@@ -5,8 +5,12 @@ chai.should()
 sinon = require 'sinon'
 sinonchai = require 'sinon-chai'
 chai.use(sinonchai)
+chaijq = require 'chai-jq'
+chai.use(chaijq)
+
 
 chai.config.includeStack = true
+
 _ = require 'lodash'
 describe "User", ->
 	
@@ -237,15 +241,15 @@ describe "server",->
 		
 		
 
-	it "testing 123",(done)->
-		browser = new Browser()
-		browser.visit "http://www.google.com"
-		.then ()->
+	# it "testing 123",->
+	# 	browser = new Browser()
+	# 	browser.visit "http://www.google.com"
+	# 	.then ()->
 			
-			browser.success.should.equal true
-			# browser.log("Currently visiting", browser.location)
-			console.log browser.location.toString()
-		.then done,done
+	# 		browser.success.should.equal true
+	# 		# browser.log("Currently visiting", browser.location)
+	# 		console.log browser.location.toString()
+	# 	.then done,done
 			
 	
 	it "It should welcome the new user by websocket",(done)->
@@ -257,14 +261,31 @@ describe "server",->
 		.then ->
 			# console.log browser.html('p')
 			browser.text("p").should.equal "Hello"
+		.then ->
+			browser.text("title").should.equal "Welcome new User"
 			done()
 		.catch (error)->
-			console.error error
+			console.error error.message
 			done(error) 
 				
 		
-	it "It should record users connections"
-	
+	it "Correct Globals",(done)->
+		browser = new Browser({debug:true, runScripts:false})
+
+		browser.visit "http://localhost:3000"
+		.then ()->
+			
+			browser.wait 3000,()->
+        		console.log(browser.html());
+        		console.log(browser.success);
+			browser.success.should.equal true
+		.then ()->
+			
+			console.log browser.window.$
+			done()
+		.catch (error)->
+			console.error error
+			done(error)
 	it "It should check which features a device is capable of using modernizr"
 	it "It should log the users browser"
 	

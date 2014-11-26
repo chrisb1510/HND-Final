@@ -4,5 +4,7 @@
 --require chai
 --require should
 --require sinon
+--require jquery
+--require chai-jquery
 --require test/helper.coffee
 
