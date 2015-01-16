@@ -8,7 +8,7 @@ chai.use(sinonchai)
 chaijq = require 'chai-jq'
 chai.use(chaijq)
 
-
+User = require '../coffee/User.coffee'
 Game = require '../coffee/Game.coffee'
 Board = require '../coffee/Board.coffee'
 Browser = require 'zombie'
@@ -16,7 +16,7 @@ chai.config.includeStack = true
 
 _ = require 'lodash'
 describe "User", ->
-	User = require '../coffee/User.coffee'
+
 	it "user should be type of User",->
 		user = new User()
 		user.should.be.instanceof User
@@ -33,7 +33,7 @@ describe "User", ->
 		game.should.be.instanceof Game
 	
 describe "Game",->
-	User = require '../coffee/User.coffee'
+	
 	it "game should be type of Game",->
 		
 		game = new Game()
@@ -99,7 +99,6 @@ describe "Game",->
 		_.size(shortGame.board.Spaces).should.equal 20
 
 	describe "Board",->
-		User = require '../coffee/User.coffee'
 		it "It should exist",->
 			
 			

@@ -1,10 +1,11 @@
 --compilers coffee:coffee-script/register
-
---require coffee-script/register
 --require chai
 --require should
 --require sinon
 --require jquery
---require chai-jquery
+--require chai-jq
+--globals 'chai','should','sinon','jquery'
+--check-leaks
+--require /coffee/*
 --require test/helper.coffee
-
+--debug
